@@ -1,15 +1,16 @@
-import * as React from "react"
+import React, { useEffect } from "react"
+import { navigate } from "gatsby"
 
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const NotFoundPage = () => (
-  <Layout>
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+const NotFoundPage = () => {
+  useEffect(() => {
+    navigate(process.env.GATSBY_REDIRECT_URL)
+  }, [])
 
-export const Head = () => <Seo title="404: Not Found" />
+  return null
+}
+
+export const Head = () => <Seo title="Redirecting..." />
 
 export default NotFoundPage
